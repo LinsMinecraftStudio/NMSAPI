@@ -1,4 +1,4 @@
-package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3;
+package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object;
 
 import io.github.linsminecraftstudio.nmsapi.item.NMSAPIItem;
 import org.bukkit.craftbukkit.v1_20_R3.inventory.CraftItemStack;

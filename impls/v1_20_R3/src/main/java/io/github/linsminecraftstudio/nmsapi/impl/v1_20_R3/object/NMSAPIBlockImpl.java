@@ -1,4 +1,4 @@
-package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3;
+package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object;
 
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIBlock;
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIFluidState;
@@ -30,7 +30,6 @@ public class NMSAPIBlockImpl implements NMSAPIBlock {
     public NMSAPIBlock getRelative(BlockFace face) {
         return new NMSAPIBlockImpl(block.getRelative(face));
     }
-
 
     @Override
     public Block getBukkitBlock() {

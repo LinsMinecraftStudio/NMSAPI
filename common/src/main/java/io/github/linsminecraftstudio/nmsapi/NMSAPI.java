@@ -3,13 +3,15 @@ package io.github.linsminecraftstudio.nmsapi;
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIBlock;
 import io.github.linsminecraftstudio.nmsapi.entity.NMSAPIEntity;
 import io.github.linsminecraftstudio.nmsapi.item.NMSAPIItem;
-import jdk.internal.loader.BootLoader;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Arrays;
 
 public abstract class NMSAPI {
     private static final NMSAPI impl;
@@ -24,7 +26,7 @@ public abstract class NMSAPI {
             String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
             String clazzName = "io.github.linsminecraftstudio.nmsapi.impl." + version + ".NMSAPIImpl";
-            if (BootLoader.getDefinedPackage("com.destroystokyo.paper") != null) {
+            if (Arrays.stream(Package.getPackages()).anyMatch(p -> p.getName().contains("com.destroystokyo.paper"))) {
                 if (mcvInt >= 1205) {
                     mcvInt = getFallbackIntMCVersionIfNotFound(mcvInt);
                     clazzName = "io.github.linsminecraftstudio.nmsapi.impl." + mcvInt + ".NMSAPIImpl";
@@ -82,6 +84,10 @@ public abstract class NMSAPI {
         return impl.getEntityImpl(bukkitEntity);
     }
 
+    public static double[] getServerTps() {
+        return impl.getServerTpsImpl();
+    }
+
     // Abstract methods
 
     public abstract NMSAPIBlock getBlockImpl(Block block);
@@ -91,6 +97,8 @@ public abstract class NMSAPI {
     public abstract NMSAPIItem getItemImpl(ItemStack itemStack);
 
     public abstract NMSAPIEntity getEntityImpl(Entity bukkitEntity);
+
+    public abstract double[] getServerTpsImpl();
 
     public abstract String getSharedConstantsGameVersion();
 

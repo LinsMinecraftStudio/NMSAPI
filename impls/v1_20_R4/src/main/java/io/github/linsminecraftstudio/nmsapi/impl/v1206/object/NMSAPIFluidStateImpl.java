@@ -1,11 +1,10 @@
-package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3;
+package io.github.linsminecraftstudio.nmsapi.impl.v1206.object;
 
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIFluidState;
 import net.minecraft.world.level.material.FluidState;
-
 import org.bukkit.block.BlockState;
-import org.bukkit.craftbukkit.v1_20_R3.block.CraftBlock;
-import org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockStates;
+import org.bukkit.craftbukkit.block.CraftBlock;
+import org.bukkit.craftbukkit.block.CraftBlockStates;
 
 public class NMSAPIFluidStateImpl implements NMSAPIFluidState {
     private final CraftBlock block;

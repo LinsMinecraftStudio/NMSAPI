@@ -1,23 +1,23 @@
-package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3;
+package io.github.linsminecraftstudio.nmsapi.impl.v1206;
 
 import io.github.linsminecraftstudio.nmsapi.NMSAPI;
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIBlock;
 import io.github.linsminecraftstudio.nmsapi.entity.NMSAPIEntity;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity.NMSAPIEntityImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity.NMSAPILivingEntityImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity.NMSAPIMobImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity.NMSAPIPlayerImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object.NMSAPIBlockImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object.NMSAPIItemImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.entity.NMSAPIEntityImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.entity.NMSAPILivingEntityImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.entity.NMSAPIMobImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.entity.NMSAPIPlayerImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.object.NMSAPIBlockImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.object.NMSAPIItemImpl;
 import io.github.linsminecraftstudio.nmsapi.item.NMSAPIItem;
 import net.minecraft.SharedConstants;
 import net.minecraft.server.MinecraftServer;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftMob;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.entity.CraftEntity;
+import org.bukkit.craftbukkit.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.entity.CraftMob;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 

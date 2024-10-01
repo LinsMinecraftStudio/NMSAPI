@@ -1,16 +1,15 @@
-package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity;
+package io.github.linsminecraftstudio.nmsapi.impl.v1206.entity;
 
 import io.github.linsminecraftstudio.nmsapi.entity.NMSAPIEntity;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object.NMSAPIServerLevelImpl;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object.ObjectConverter;
-import io.github.linsminecraftstudio.nmsapi.object.NMSAPIRandomSource;
 import io.github.linsminecraftstudio.nmsapi.enums.MoverType;
-import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity.random.NMSAPIRandomSourceImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.entity.random.NMSAPIRandomSourceImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.object.NMSAPIServerLevelImpl;
+import io.github.linsminecraftstudio.nmsapi.impl.v1206.object.ObjectConverter;
+import io.github.linsminecraftstudio.nmsapi.object.NMSAPIRandomSource;
 import io.github.linsminecraftstudio.nmsapi.object.NMSAPIServerLevel;
 import io.github.linsminecraftstudio.nmsapi.object.NMSBoundingBoxImpl;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftEntity;
+import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.BoundingBox;
 import org.joml.Vector3f;
