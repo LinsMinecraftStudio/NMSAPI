@@ -1,0 +1,41 @@
+name: Bug report
+description: Report bugs
+title: '[Bug]: '
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the bug
+      description: What happened?
+    validations:
+      required: true
+  - type: input
+    id: nmsapi-ver
+    attributes:
+      label: NMSAPI version
+      description: JUST need to write its version number
+    validations:
+      required: true
+  - type: input
+    id: mc-ver
+    attributes:
+      label: Minecraft version
+      description: JUST need to write its version number
+    validations:
+      required: true
+  - type: input
+    id: server-impl
+    attributes:
+      label: Server Implementation
+      description: JUST copy the information output after inputting `/ver` in the console
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Info
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://issue-forms-creator.netlify.app)
