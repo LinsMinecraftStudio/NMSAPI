@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- This file is used to build the common implementation module of the NMS API. -->
-<!-- It is a template file, and should be copied to the implementation module's directory and edited as needed. -->
-<!-- The parent pom.xml file should also be updated to include the implementation module. -->
-<!-- Don't include the implementation module in the parent pom.xml file, as it will cause some issues with the build. -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>io.github.linsminecraftstudio</groupId>
-        <artifactId>nms-api</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>nms-api-parent</artifactId>
+        <version>1.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>nms-impl-v1_20_R3</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -63,13 +58,18 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <skipPublishing>true</skipPublishing>
+                    <failOnBuildFailure>false</failOnBuildFailure>
+                </configuration>
+            </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
 
     <pluginRepositories>
@@ -107,8 +107,9 @@
 
         <dependency>
             <groupId>io.github.linsminecraftstudio</groupId>
-            <artifactId>nms-api-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>nms-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>io.papermc.paper</groupId>

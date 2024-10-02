@@ -58,4 +58,9 @@ public class NMSAPIWrappedGoal extends Goal {
     public boolean canUse() {
         return entityGoal.canUse();
     }
+
+    @Override
+    public boolean requiresUpdateEveryTick() {
+        return entityGoal.requiresUpdateEveryTick();
+    }
 }

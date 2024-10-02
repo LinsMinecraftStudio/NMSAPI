@@ -27,7 +27,7 @@ public class NMSAPIFluidStateImpl implements NMSAPIFluidState {
 
     @Override
     public float getHeight() {
-        return state.getHeight(block.getHandle(),  block.getPosition());
+        return state.getHeight(block.getHandle(), block.getPosition());
     }
 
     @Override

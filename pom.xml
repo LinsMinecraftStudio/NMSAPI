@@ -1,22 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.linsminecraftstudio</groupId>
-    <artifactId>nms-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>nms-api-parent</artifactId>
+    <version>1.0</version>
+    <description>An API for bukkit plugins to interact with NMS</description>
 
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <revision>1.0-SNAPSHOT</revision>
+        <revision>1.0</revision>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>published</waitUntil>
+                    <checksums>required</checksums>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keyname>mmmjjkx</keyname>
+                    <passphrase>${env.GPG_PASS}</passphrase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>central</id>
+            <activation/>
+        </profile>
+    </profiles>
+
+    <scm>
+        <connection>scm:git:https://github.com/LinsMinecraftStudio/NMSAPI.git</connection>
+        <developerConnection>scm:git:https://github.com/LinsMinecraftStudio/NMSAPI.git</developerConnection>
+        <url>https://github.com/LinsMinecraftStudio/NMSAPI</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <url>https://github.com/LinsMinecraftStudio/NMSAPI</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <url>https://central.sonatype.com/</url>
+        </repository>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <name>Jinhong Li</name>
+            <email>tygfhk@outlook.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <modules>
         <module>common</module>
+        <module>artifact</module>
         <module>impls/v1_20_R3</module>
         <module>impls/v1_20_R4</module>
     </modules>

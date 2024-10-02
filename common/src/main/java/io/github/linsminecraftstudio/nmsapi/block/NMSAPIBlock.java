@@ -14,6 +14,7 @@ public interface NMSAPIBlock {
 
     /**
      * Apply bone meal to the block.
+     *
      * @param face the face to apply bone meal to.
      * @return true if bone meal was consumed, false otherwise.
      */

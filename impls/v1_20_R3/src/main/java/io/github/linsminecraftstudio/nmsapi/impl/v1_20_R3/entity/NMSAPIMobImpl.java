@@ -3,7 +3,6 @@ package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.entity;
 import io.github.linsminecraftstudio.nmsapi.entity.NMSAPIMob;
 import io.github.linsminecraftstudio.nmsapi.entity.ai.goal.EntityGoal;
 import io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object.ObjectConverter;
-import io.github.linsminecraftstudio.nmsapi.object.NMSAPIServerLevel;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import org.bukkit.craftbukkit.v1_20_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_20_R3.entity.CraftMob;

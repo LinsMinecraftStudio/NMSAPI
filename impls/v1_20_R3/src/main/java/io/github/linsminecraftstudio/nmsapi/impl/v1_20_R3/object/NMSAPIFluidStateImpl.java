@@ -2,7 +2,6 @@ package io.github.linsminecraftstudio.nmsapi.impl.v1_20_R3.object;
 
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIFluidState;
 import net.minecraft.world.level.material.FluidState;
-
 import org.bukkit.block.BlockState;
 import org.bukkit.craftbukkit.v1_20_R3.block.CraftBlock;
 import org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockStates;
@@ -28,7 +27,7 @@ public class NMSAPIFluidStateImpl implements NMSAPIFluidState {
 
     @Override
     public float getHeight() {
-        return state.getHeight(block.getHandle(),  block.getPosition());
+        return state.getHeight(block.getHandle(), block.getPosition());
     }
 
     @Override

@@ -14,12 +14,13 @@ import java.util.EnumSet;
 import java.util.stream.Collectors;
 
 public class ObjectConverter {
-    private ObjectConverter() {}
-    
+    private ObjectConverter() {
+    }
+
     public static EntityGoal toEntityGoal(Goal nmsGoal) {
         return new EntityGoalImpl(nmsGoal);
     }
-    
+
     public static <T extends Enum<T>> EnumSet<T> paperEnumSetToJavaEnumSet(Class<T> enumClass, OptimizedSmallEnumSet<T> paperEnumSet) {
         EnumSet<T> javaEnumSet = EnumSet.noneOf(enumClass);
         for (T enumValue : enumClass.getEnumConstants()) {
@@ -29,7 +30,7 @@ public class ObjectConverter {
         }
         return javaEnumSet;
     }
-    
+
     public static EntityGoal.Flag toEntityGoalFlag(Goal.Flag nmsFlag) {
         return switch (nmsFlag) {
             case MOVE -> EntityGoal.Flag.MOVE;
@@ -90,9 +91,17 @@ public class ObjectConverter {
 
     private static class EntityGoalImpl extends EntityGoal {
         private final Goal nmsGoal;
-        
+
         public EntityGoalImpl(Goal nmsGoal) {
             this.nmsGoal = nmsGoal;
+
+            EnumSet<EntityGoal.Flag> entityGoalFlags = EnumSet.noneOf(EntityGoal.Flag.class);
+
+            for (Goal.Flag flag : paperEnumSetToJavaEnumSet(Goal.Flag.class, nmsGoal.getFlags())) {
+                entityGoalFlags.add(toEntityGoalFlag(flag));
+            }
+
+            setFlags(entityGoalFlags);
         }
 
         @Override
@@ -120,12 +129,25 @@ public class ObjectConverter {
             return nmsGoal.canContinueToUse();
         }
 
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return nmsGoal.requiresUpdateEveryTick();
+        }
 
+        @Override
+        public void tick() {
+            nmsGoal.tick();
+        }
 
         @Override
         public EnumSet<Flag> getFlags() {
             EnumSet<Goal.Flag> javaEnumSet = paperEnumSetToJavaEnumSet(Goal.Flag.class, nmsGoal.getFlags());
             return javaEnumSet.stream().map(ObjectConverter::toEntityGoalFlag).collect(Collectors.toCollection(() -> EnumSet.noneOf(Flag.class)));
+        }
+
+        @Override
+        public final boolean fromNms() {
+            return true;
         }
     }
 }

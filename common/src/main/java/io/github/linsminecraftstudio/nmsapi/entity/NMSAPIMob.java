@@ -10,6 +10,10 @@ public interface NMSAPIMob extends NMSAPILivingEntity {
 
     void removeAllGoals(Predicate<EntityGoal> predicate);
 
+    default void removeAllGoals() {
+        removeAllGoals(goal -> true);
+    }
+
     boolean hasLineOfSensingSight(Entity target);
 
     default boolean hasLineOfSensingSight(NMSAPIEntity target) {

@@ -14,26 +14,22 @@ import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Optional;
 
 @Getter
 public class LookAtPlayerGoal extends EntityGoal {
+    protected final float lookDistance;
+    protected final float probability;
+    protected final Class<? extends LivingEntity> lookAtType;
+    protected final TargetingConditions lookAtContext;
     private final Mob mob;
     private final NMSAPIMob wrappedMob;
-
+    private final boolean onlyHorizontal;
+    private final Location eyeLocation;
     @Nullable
     protected Entity lookAt;
     protected NMSAPIEntity wrappedLookAt;
-
-    protected final float lookDistance;
     private int lookTime;
-    protected final float probability;
-    private final boolean onlyHorizontal;
-    protected final Class<? extends LivingEntity> lookAtType;
-    protected final TargetingConditions lookAtContext;
-
-    private final Location eyeLocation;
 
     public LookAtPlayerGoal(Mob mob, Class<? extends LivingEntity> targetType, float range) {
         this(mob, targetType, range, 0.02F);
@@ -71,7 +67,7 @@ public class LookAtPlayerGoal extends EntityGoal {
             if (this.lookAtType == Player.class) {
                 Optional.ofNullable(this.wrappedMob.level().getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), eyeLocation.getY(), this.mob.getZ())).ifPresentOrElse((player) -> this.lookAt = player.getBukkitPlayer(), () -> this.lookAt = null);
             } else {
-                this.lookAt = this.wrappedMob.level().getNearestEntity((List<? extends NMSAPILivingEntity>) this.wrappedMob.level().getEntitiesOfClass(this.lookAtType, this.wrappedMob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), (livingEntity) -> true).stream().map(e -> (LivingEntity) e.getBukkitEntity()).toList(), this.lookAtContext, this.mob, this.mob.getX(), eyeLocation.getY(), this.mob.getZ());
+                this.lookAt = this.wrappedMob.level().getNearestEntity(this.wrappedMob.level().getEntitiesOfClass(this.lookAtType, this.wrappedMob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), (livingEntity) -> true).stream().map(e -> (NMSAPILivingEntity) e).toList(), this.lookAtContext, this.mob, this.mob.getX(), eyeLocation.getY(), this.mob.getZ());
             }
 
             return this.lookAt != null;
@@ -82,7 +78,7 @@ public class LookAtPlayerGoal extends EntityGoal {
     public boolean canContinueToUse() {
         if (this.lookAt.isDead()) {
             return false;
-        } else if (this.wrappedMob.distanceToSqr(this.lookAt) > (double)(this.lookDistance * this.lookDistance)) {
+        } else if (this.wrappedMob.distanceToSqr(this.lookAt) > (double) (this.lookDistance * this.lookDistance)) {
             return false;
         } else {
             return this.lookTime > 0;

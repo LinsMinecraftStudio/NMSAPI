@@ -17,6 +17,7 @@ public interface NMSAPILivingEntity extends NMSAPIEntity {
 
     /**
      * Causes the entity to animate a hurt animation.<br>
+     *
      * @param yaw the yaw angle to use for the animation.
      */
     void animateHurt(float yaw);

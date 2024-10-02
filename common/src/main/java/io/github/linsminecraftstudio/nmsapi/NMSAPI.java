@@ -3,7 +3,6 @@ package io.github.linsminecraftstudio.nmsapi;
 import io.github.linsminecraftstudio.nmsapi.block.NMSAPIBlock;
 import io.github.linsminecraftstudio.nmsapi.entity.NMSAPIEntity;
 import io.github.linsminecraftstudio.nmsapi.item.NMSAPIItem;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -15,8 +14,6 @@ import java.util.Arrays;
 
 public abstract class NMSAPI {
     private static final NMSAPI impl;
-
-    protected NMSAPI() {}
 
     static {
         try {
@@ -38,6 +35,9 @@ public abstract class NMSAPI {
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize NMSAPI, the server mc version is not supported", e);
         }
+    }
+
+    protected NMSAPI() {
     }
 
     private static int getFallbackIntMCVersionIfNotFound(int current) {
@@ -72,6 +72,10 @@ public abstract class NMSAPI {
         return impl.getItemImpl(itemStack);
     }
 
+    /**
+     * You can just get minecraft version directly without waiting the server enables your plugin.
+     * @return The minecraft version of the server.
+     */
     public static String getMinecraftVersionDirectly() {
         return impl.getSharedConstantsGameVersion();
     }

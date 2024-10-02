@@ -5,6 +5,10 @@ import java.util.EnumSet;
 public abstract class EntityGoal {
     private final EnumSet<Flag> goalTypes = EnumSet.noneOf(Flag.class);
 
+    protected static int reducedTickDelay(int serverTicks) {
+        return -Math.floorDiv(-serverTicks, 2);
+    }
+
     public abstract boolean canUse();
 
     public boolean canContinueToUse() {
@@ -28,12 +32,8 @@ public abstract class EntityGoal {
     public void tick() {
     }
 
-    public void setFlags(EnumSet<Flag> controls) {
-        this.goalTypes.clear();
-        this.goalTypes.addAll(controls);
-        if (this.goalTypes.isEmpty()) {
-            this.goalTypes.add(Flag.UNKNOWN_BEHAVIOR);
-        }
+    public boolean fromNms() {
+        return false;
     }
 
     public String toString() {
@@ -44,12 +44,16 @@ public abstract class EntityGoal {
         return this.goalTypes;
     }
 
-    protected int adjustedTickDelay(int ticks) {
-        return this.requiresUpdateEveryTick() ? ticks : reducedTickDelay(ticks);
+    public void setFlags(EnumSet<Flag> controls) {
+        this.goalTypes.clear();
+        this.goalTypes.addAll(controls);
+        if (this.goalTypes.isEmpty()) {
+            this.goalTypes.add(Flag.UNKNOWN_BEHAVIOR);
+        }
     }
 
-    protected static int reducedTickDelay(int serverTicks) {
-        return -Math.floorDiv(-serverTicks, 2);
+    protected int adjustedTickDelay(int ticks) {
+        return this.requiresUpdateEveryTick() ? ticks : reducedTickDelay(ticks);
     }
 
     public enum Flag {

@@ -1,7 +1,7 @@
 package io.github.linsminecraftstudio.nmsapi.entity;
 
-import io.github.linsminecraftstudio.nmsapi.object.NMSAPIRandomSource;
 import io.github.linsminecraftstudio.nmsapi.enums.MoverType;
+import io.github.linsminecraftstudio.nmsapi.object.NMSAPIRandomSource;
 import io.github.linsminecraftstudio.nmsapi.object.NMSAPIServerLevel;
 import io.github.linsminecraftstudio.nmsapi.object.NMSBoundingBoxImpl;
 import org.bukkit.entity.Entity;
@@ -11,8 +11,6 @@ import org.joml.Vector3f;
 public interface NMSAPIEntity {
     void move(MoverType moverType, Vector3f movement);
 
-    void setBoundingBox(BoundingBox boundingBox);
-
     Entity getBukkitEntity();
 
     boolean isAlliedTo(Entity entity);
@@ -20,6 +18,8 @@ public interface NMSAPIEntity {
     NMSAPIRandomSource getEntityRandomSource();
 
     NMSBoundingBoxImpl getBoundingBox();
+
+    void setBoundingBox(BoundingBox boundingBox);
 
     double getEyeY();
 

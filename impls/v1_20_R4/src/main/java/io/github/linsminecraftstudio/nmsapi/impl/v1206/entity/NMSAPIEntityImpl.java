@@ -27,11 +27,6 @@ public class NMSAPIEntityImpl implements NMSAPIEntity {
     }
 
     @Override
-    public void setBoundingBox(BoundingBox boundingBox) {
-        this.entity.getHandle().setBoundingBox(ObjectConverter.toNotchAABB(boundingBox));
-    }
-
-    @Override
     public Entity getBukkitEntity() {
         return entity;
     }
@@ -52,13 +47,18 @@ public class NMSAPIEntityImpl implements NMSAPIEntity {
     }
 
     @Override
+    public void setBoundingBox(BoundingBox boundingBox) {
+        this.entity.getHandle().setBoundingBox(ObjectConverter.toNotchAABB(boundingBox));
+    }
+
+    @Override
     public double getEyeY() {
         return this.entity.getHandle().getEyeY();
     }
 
     @Override
     public NMSAPIServerLevel level() {
-        return new NMSAPIServerLevelImpl(this.entity.getHandle().getServer().getLevel(this.entity.getHandle().level().dimension()));
+        return new NMSAPIServerLevelImpl(this.entity.getHandle().level().getMinecraftWorld());
     }
 
     private net.minecraft.world.entity.MoverType toNotchMoverType(MoverType moverType) {

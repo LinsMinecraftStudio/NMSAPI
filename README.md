@@ -21,6 +21,7 @@ Javadoc: https://javadoc.io/doc/io.github.linsminecraftstudio/nmsapi/latest/ (no
     <version>THE_VERSION_YOU_WANT_TO_USE</version>
 </dependency>
 ```
+
 ### Gradle
 
 ```groovy

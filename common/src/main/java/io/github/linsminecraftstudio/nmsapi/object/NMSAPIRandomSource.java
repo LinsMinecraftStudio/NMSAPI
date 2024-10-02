@@ -2,7 +2,7 @@ package io.github.linsminecraftstudio.nmsapi.object;
 
 public interface NMSAPIRandomSource {
     void setSeed(long seed);
-    
+
     long nextLong();
 
     int nextInt();
