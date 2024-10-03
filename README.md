@@ -1,6 +1,6 @@
 # NMSAPI
 
-A api for build a bridge from NMS(`net.minecraft.server`) to bukkit plugins.
+An api for build a bridge from NMS(`net.minecraft.server`) to bukkit plugins.
 
 Javadoc: https://javadoc.io/doc/io.github.linsminecraftstudio/nmsapi/latest/ (not available yet)
 
